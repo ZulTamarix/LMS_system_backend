@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('course_file', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('fil_crs_id')->nullable()->constrained('course')->onDelete('cascade');
+            $table->string('fil_title');
+            $table->string('fil_description');
+            $table->string('fil_order');
+            $table->string('fil_file');
+            $table->string('fil_duration');
+            $table->string('fil_isRequired');
+            $table->string('fil_status');
             $table->timestamps();
         });
     }

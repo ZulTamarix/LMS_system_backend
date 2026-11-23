@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assessment', function (Blueprint $table) {
+        Schema::create('course_assessment', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('asm_crs_id')->nullable()->constrained('course')->onDelete('cascade');
+            $table->string('asm_title');
+            $table->string('asm_totalQuestion');
+            $table->string('asm_timeLimit');
+            $table->string('asm_status');
+            $table->string('asm_score');
             $table->timestamps();
         });
     }

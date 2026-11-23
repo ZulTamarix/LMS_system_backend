@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certificate', function (Blueprint $table) {
+        Schema::create('user_certificate', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('crt_usr_id')->nullable()->constrained('user')->onDelete('cascade');
+            $table->foreignId('crt_crs_id')->nullable()->constrained('course')->onDelete('cascade');
+            $table->string('crt_no');
+            $table->string('crt_date_completed');
+            $table->string('crt_file');
             $table->timestamps();
         });
     }
